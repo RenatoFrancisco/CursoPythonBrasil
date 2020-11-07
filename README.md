@@ -1,5 +1,5 @@
 # CursoPythonBrasil
-Curso da Alura - Python Brasil: Validação de dados no padrão nacional
+## Curso da Alura - Python Brasil: Validação de dados no padrão nacional
 
 - Aprenda a validar documentos utilizando Python 3
 - Aprenda a criar máscaras utilizando fatiamento de strings
