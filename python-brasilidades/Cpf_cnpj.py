@@ -1,44 +1,52 @@
 from validate_docbr import CPF, CNPJ
 
-class CpfCnpj:
+class Documento:
 
-    def __init__(self, documento, tipo_documento):
+    @staticmethod
+    def cria_documento(documento):
+        if len(documento) == 11:
+            return DocCpf(documento)
+
+        return DocCnpj(documento)
+
+class DocCpf:
+
+    def __init__(self, documento):
         documento = str(documento)
-        self.tipo_documento =  tipo_documento
-
-        if self.tipo_documento == 'cpf':
-            if self.cpf_eh_valido(documento):
-                self.cpf = documento
-            else:
-                raise ValueError('CPF inválido!')
-        elif self.tipo_documento == 'cnpj':
-            if self.cnpj_eh_valido(documento):
-                self.cnpj =  documento
-            else:
-                raise ValueError('CNPJ inválido!')
+        if self.valida(documento):
+            self.cpf = documento
         else:
-            raise ValueError('Documento inválido!')
+            raise ValueError('CPF inválido!')
 
     def __str__(self):
-        if self.tipo_documento == 'cpf':
-            return self.format_cpf()
-        return self.format_cnpj()
+        return self.format_cpf()
 
-    def cpf_eh_valido(self, cpf):
+    def valida(self, cpf):
         if len(cpf) == 11:
             validador = CPF()
             return validador.validate(cpf)
         raise ValueError('Quantidade de dígitos inválida')
     
-    def cnpj_eh_valido(self, cnpj):
+    def format_cpf(self):
+        marcara = CPF()
+        return marcara.mask(self.cpf)
+
+class DocCnpj:
+    def __init__(self, documento):
+        documento = str(documento)
+        if self.valida(documento):
+            self.cnpj =  documento
+        else:
+            raise ValueError('CNPJ inválido!')
+
+    def __str__(self):
+        return self.format_cnpj()
+
+    def valida(self, cnpj):
         if len(cnpj) == 14:
             validador = CNPJ()
             return validador.validate(cnpj)
         raise ValueError('Quantidade de dígitos inválidas')
-
-    def format_cpf(self):
-        marcara = CPF()
-        return marcara.mask(self.cpf)
 
     def format_cnpj(self):
         mascara = CNPJ()
