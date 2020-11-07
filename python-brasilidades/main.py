@@ -1,12 +1,6 @@
-from validate_docbr import CPF
-from Cpf import Cpf
+from Cpf_cnpj import CpfCnpj
 
-#  cpf = '15616987913'
-objeto_cpf = Cpf('15316264754')
-print(objeto_cpf)
+exemplo_cnpj = '35379838000112'
+documento = CpfCnpj(exemplo_cnpj, 'cnpj')
 
-# print(objeto_cpf)
-
-# cpf = CPF()
-# print(cpf.validate('012.345.678-90'))
-# print(cpf.validate('11111111111'))
+# print(documento)
