@@ -3,5 +3,7 @@ from DataBr import DataBr
 
 cadastro = DataBr()
 
-print(cadastro.mes_cadastro())
-print(cadastro.dia_semana())
+# print(cadastro.mes_cadastro())
+# print(cadastro.dia_semana())
+
+print(cadastro)
