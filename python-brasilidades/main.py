@@ -1,9 +1,6 @@
-from datetime import datetime, timedelta
-from DataBr import DataBr
+from acesso_cep import BuscaEndereco
 
-cadastro = DataBr()
+cep = 25870145
+objeto_cep = BuscaEndereco(cep)
 
-# print(cadastro.mes_cadastro())
-# print(cadastro.dia_semana())
-
-print(cadastro.tempo_cadastro())
+print(objeto_cep.format_cep())
